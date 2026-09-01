@@ -84,6 +84,12 @@ function App() {
         setEstaEditando(usuario.id)
     }
 
+
+    function cancelarEdicao() {
+        setEstaEditando(-1)
+        setNome("")
+        setIdade("")
+    }
     useEffect( ()=> { 
         buscarTodos()
     }, [] )
@@ -101,6 +107,9 @@ function App() {
             <input value={idade} onChange={ e => setIdade(e.target.value)}  placeholder="Digite a idade..."/>
             <br/>
             <button onClick={salvar}>Salvar</button>
+            {
+                estaEditando != -1 && <button onClick={cancelarEdicao}>Cancelar</button>
+            }
 
             <hr/>
 
